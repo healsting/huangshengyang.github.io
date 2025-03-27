@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时时间显示</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="time"></div>
+    <button onclick="showDialog()">显示对话框</button>
+    <button onclick="changeBackgroundColor()">改变背景色</button>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const timeString = `${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function showDialog() {
+            alert('那很坏了');
+        }
+
+        function changeBackgroundColor() {
+            const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+</body>
+
+</html>
